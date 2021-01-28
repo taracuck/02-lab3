@@ -30,17 +30,12 @@ let submissions = [
 
 // #2
 const addSubmission = (array, newName, newScore, newDate) => {
-  let ifPassed = null;
-  if (newScore >= 60) {
-    ifPassed = true;
-  } else {
-    ifPassed = false;
-  }
+  // let ifPassed = null;
   let newObject = {
     name: newName,
     score: newScore,
     date: newDate,
-    passed: ifPassed,
+    passed: newScore >= 60,
   };
   array.push(newObject);
 };
