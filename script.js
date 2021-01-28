@@ -1,4 +1,5 @@
 "use strict";
+// console.log(JSON.parse(JSON.stringify(submissions)));
 
 // #1
 let submissions = [
@@ -30,7 +31,6 @@ let submissions = [
 
 // #2
 const addSubmission = (array, newName, newScore, newDate) => {
-  // let ifPassed = null;
   let newObject = {
     name: newName,
     score: newScore,
@@ -42,7 +42,7 @@ const addSubmission = (array, newName, newScore, newDate) => {
 
 // For testing purposes:
 addSubmission(submissions, `Tara`, 100, `2020-01-27`);
-console.log(submissions);
+console.log(JSON.parse(JSON.stringify(submissions)));
 // testing done
 
 // #3
@@ -60,26 +60,20 @@ const deleteSubmissionByName = (array, name) => {
 
 // For testing purposes:
 deleteSubmissionByName(submissions, `Tara`);
-console.log(submissions);
+console.log(JSON.parse(JSON.stringify(submissions)));
 // testing done
 
 // #5
 const editSubmission = (array, index, score) => {
   array[index].score = score;
-  let ifPassed = null;
-  if (score >= 60) {
-    ifPassed = true;
-  } else {
-    ifPassed = false;
-  }
-  array[index].passed = ifPassed;
+  array[index].passed = score >= 60;
 };
 
 // For testing purposes:
 addSubmission(submissions, `Tara`, 100, `2020-01-27`);
-console.log(submissions);
+console.log(JSON.parse(JSON.stringify(submissions)));
 editSubmission(submissions, 4, 50);
-console.log(submissions);
+console.log(JSON.parse(JSON.stringify(submissions)));
 // testing done
 
 // #6
@@ -95,13 +89,13 @@ console.log(findSubmissionByName(submissions, `Tara`));
 
 // #7
 const findLowestScore = (array) => {
-  let lowestScore = 100;
+  let lowestSubmission = array[0];
   array.forEach((item) => {
-    if (item.score < lowestScore) {
-      lowestScore = item.score;
+    if (item.score < lowestSubmission.score) {
+      lowestSubmission = item;
     }
   });
-  return lowestScore;
+  return lowestSubmission;
 };
 
 // For testing purposes:
